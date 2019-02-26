@@ -1,0 +1,128 @@
+# Platform-Code
+#include "robot-config.h" 
+vex::brain brain;
+vex::motor baseFLeft (vex::PORT1,vex::gearSetting::ratio18_1,false);
+vex::motor baseFRight (vex::PORT4,vex::gearSetting::ratio18_1,true);
+vex::motor baseBLeft (vex::PORT5,vex::gearSetting::ratio18_1,false);
+vex::motor baseBRight (vex::PORT6,vex::gearSetting::ratio18_1,true);
+vex::motor flipper (vex::PORT7,vex::gearSetting::ratio18_1,false);
+vex::motor cascadeLeft (vex::PORT8,vex::gearSetting::ratio18_1,false);
+vex::motor cascadeRight (vex::PORT9,vex::gearSetting::ratio18_1,true);
+vex::motor claw (vex::PORT10,vex::gearSetting::ratio18_1,true);
+
+vex::competition;
+
+void pre_auton( void ) {
+
+}
+
+void autonomous( void ) {
+    BaseFRight.startRotateFor(-1200,rotationUnits::deg,90,velocityUnits::pct);
+    BaseFLeft.rotateFor(-1200,rotationUnits::deg,90,velocityUnits::pct,false);
+    BaseBRight.rotateFor(-1200,rotationUnits::deg,90,velocityUnits::pct,false);
+    BaseBLeft.rotateFor(-1200,rotationUnits::deg,90,velocityUnits::pct);
+    task::sleep(500);
+    
+    BaseFRight.startRotateFor(540,rotationUnits::deg,90,velocityUnits::pct);
+    BaseFLeft.rotateFor(540,rotationUnits::deg,90,velocityUnits::pct,false);
+    BaseBRight.rotateFor(540,rotationUnits::deg,90,velocityUnits::pct,false);
+    BaseBLeft.rotateFor(540,rotationUnits::deg,90,velocityUnits::pct);
+    task::sleep(500);
+    
+    BaseFRight.startRotateFor(245,rotationUnits::deg,90,velocityUnits::pct);
+    BaseFLeft.rotateFor(-245,rotationUnits::deg,90,velocityUnits::pct,false);
+    BaseBRight.rotateFor(245,rotationUnits::deg,90,velocityUnits::pct,false);
+    BaseBLeft.rotateFor(-245,rotationUnits::deg,90,velocityUnits::pct);
+    
+    Flipper.startRotateFor(500,rotationUnits::deg,33,velocityUnits::pct);
+    BaseFRight.rotateFor(-750,rotationUnits::deg,75,velocityUnits::pct,false);
+    BaseFLeft.rotateFor(-750,rotationUnits::deg,75,velocityUnits::pct,false);
+    BaseBRight.rotateFor(-750,rotationUnits::deg,75,velocityUnits::pct,false);
+    BaseBLeft.rotateFor(-750,rotationUnits::deg,75,velocityUnits::pct);
+    task::sleep(500);
+    
+    BaseFRight.startRotateFor(650,rotationUnits::deg,90,velocityUnits::pct);
+    BaseFLeft.rotateFor(650,rotationUnits::deg,90,velocityUnits::pct,false);
+    BaseBRight.rotateFor(650,rotationUnits::deg,90,velocityUnits::pct,false);
+    BaseBLeft.rotateFor(650,rotationUnits::deg,90,velocityUnits::pct);
+    task::sleep(500);
+    
+    BaseFRight.startRotateFor(245,rotationUnits::deg,90,velocityUnits::pct);
+    BaseFLeft.rotateFor(-245,rotationUnits::deg,90,velocityUnits::pct,false);
+    BaseBRight.rotateFor(-245,rotationUnits::deg,90,velocityUnits::pct,false);
+    BaseBLeft.rotateFor(245,rotationUnits::deg,90,velocityUnits::pct);
+    task::sleep(500);
+    
+    BaseFRight.startRotateFor(-1150,rotationUnits::deg,90,velocityUnits::pct);
+    BaseFLeft.rotateFor(-1150,rotationUnits::deg,90,velocityUnits::pct,false);
+    BaseBRight.rotateFor(-1150,rotationUnits::deg,90,velocityUnits::pct,false);
+    BaseBLeft.rotateFor(-1150,rotationUnits::deg,90,velocityUnits::pct);
+    task::sleep(500);
+    
+    BaseFRight.startRotateFor(-240,rotationUnits::deg,90,velocityUnits::pct);
+    BaseFLeft.rotateFor(240,rotationUnits::deg,90,velocityUnits::pct,false);
+    BaseBRight.rotateFor(-240,rotationUnits::deg,90,velocityUnits::pct,false);
+    BaseBLeft.rotateFor(240,rotationUnits::deg,90,velocityUnits::pct);
+    task::sleep(500);
+    
+    //Climbing Platform
+    BaseFRight.startRotateFor(-1300,rotationUnits::deg,90,velocityUnits::pct);
+    BaseFLeft.rotateFor(-1300,rotationUnits::deg,90,velocityUnits::pct,false);
+    BaseBRight.rotateFor(-1300,rotationUnits::deg,90,velocityUnits::pct,false);
+    BaseBLeft.rotateFor(-1300,rotationUnits::deg,90,velocityUnits::pct);
+}
+
+void usercontrol( void ) {
+  while (1){
+  
+        BaseFLeft.spin(directionType::fwd,(Controller1.Axis3.value()),velocityUnits::pct);
+        BaseBLeft.spin(directionType::fwd,(Controller1.Axis3.value()),velocityUnits::pct);
+           
+        BaseFRight.spin(directionType::fwd,(Controller1.Axis2.value()),velocityUnits::pct);
+        BaseBRight.spin(directionType::fwd,(Controller1.Axis2.value()),velocityUnits::pct);
+       
+        if (Controller1.ButtonB.pressing()){
+            CascadeRight.spin(directionType::fwd,60,velocityUnits::pct);
+            CascadeLeft.spin(directionType::fwd,60,velocityUnits::pct);
+        }   
+        else if (Controller1.ButtonDown.pressing()){
+            CascadeRight.spin(directionType::fwd,-60,velocityUnits::pct);
+            CascadeLeft.spin(directionType::fwd,-60,velocityUnits::pct);
+        }
+       
+        else if (Controller1.ButtonL1.pressing()){
+            Claw.spin(directionType::fwd,75,velocityUnits::pct);
+        } 
+        
+        else if (Controller1.ButtonL2.pressing()){
+            Claw.spin(directionType::fwd,-50,velocityUnits::pct);
+        }
+        
+        else if (Controller1.ButtonR1.pressing()){
+            Flipper.spin(directionType::fwd,33,velocityUnits::pct);
+        }   
+        else if (Controller1.ButtonR2.pressing()){
+            Flipper.stop(brakeType::coast);
+        }
+        else{
+            Claw.stop(brakeType::hold);
+            CascadeRight.stop(brakeType::hold);
+            CascadeLeft.stop(brakeType::hold);
+        }
+        task::sleep(20);
+    }    
+
+ 
+    vex::task::sleep(20); 
+  }
+
+int main() {
+
+    pre_auton();
+    Competition.autonomous( autonomous );
+    Competition.drivercontrol( usercontrol );
+
+   
+}
+
+ 
