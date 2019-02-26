@@ -2,8 +2,8 @@
 
 vex::brain brain;
 vex::motor baseFLeft (vex::PORT1,vex::gearSetting::ratio18_1,false);
-vex::motor baseFRight (vex::PORT4,vex::gearSetting::ratio18_1,true);
-vex::motor baseBLeft (vex::PORT5,vex::gearSetting::ratio18_1,false);
+vex::motor baseFRight (vex::PORT4,vex::gearSetting::ratio18_1,true); 
+vex::motor baseBLeft (vex::PORT5,vex::gearSetting::ratio18_1,false); 
 vex::motor baseBRight (vex::PORT6,vex::gearSetting::ratio18_1,true);
 vex::motor flipper (vex::PORT7,vex::gearSetting::ratio18_1,false);
 vex::motor cascadeLeft (vex::PORT8,vex::gearSetting::ratio18_1,false);
