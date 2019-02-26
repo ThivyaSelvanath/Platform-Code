@@ -51,16 +51,16 @@ void usercontrol( void ) {
             CascadeLeft.spin(directionType::fwd,-60,velocityUnits::pct);
         }
        
-        else if (Controller1.ButtonL2.pressing()){
-            Claw.spin(directionType::fwd,60,velocityUnits::pct);
+        else if (Controller1.ButtonL1.pressing()){
+            Claw.spin(directionType::fwd,75,velocityUnits::pct);
         } 
         
-        else if (Controller1.ButtonL1.pressing()){
-            Claw.spin(directionType::fwd,-60,velocityUnits::pct);
+        else if (Controller1.ButtonL2.pressing()){
+            Claw.spin(directionType::fwd,-50,velocityUnits::pct);
         }
         
         else if (Controller1.ButtonR1.pressing()){
-            Flipper.spin(directionType::fwd,40,velocityUnits::pct);
+            Flipper.spin(directionType::fwd,33,velocityUnits::pct);
         }   
         else if (Controller1.ButtonR2.pressing()){
             Flipper.stop(brakeType::coast);
