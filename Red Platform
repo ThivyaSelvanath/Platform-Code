@@ -36,17 +36,17 @@ void autonomous( void ) {
 
 void usercontrol( void ) {
   while (1){
-        BaseTopLeft.spin(directionType::fwd,(Controller1.Axis3.value()),velocityUnits::pct);
-        BaseBottomLeft.spin(directionType::fwd,(Controller1.Axis3.value()),velocityUnits::pct);
+        BaseFLeft.spin(directionType::fwd,(Controller1.Axis3.value()),velocityUnits::pct);
+        BaseBLeft.spin(directionType::fwd,(Controller1.Axis3.value()),velocityUnits::pct);
            
-        BaseTopRight.spin(directionType::fwd,(Controller1.Axis2.value()),velocityUnits::pct);
-        BaseBottomRight.spin(directionType::fwd,(Controller1.Axis2.value()),velocityUnits::pct);
+        BaseFRight.spin(directionType::fwd,(Controller1.Axis2.value()),velocityUnits::pct);
+        BaseBRight.spin(directionType::fwd,(Controller1.Axis2.value()),velocityUnits::pct);
        
-        if (Controller1.ButtonDown.pressing()){
+        if (Controller1.ButtonB.pressing()){
             CascadeRight.spin(directionType::fwd,60,velocityUnits::pct);
             CascadeLeft.spin(directionType::fwd,60,velocityUnits::pct);
         }   
-        else if (Controller1.ButtonB.pressing()){
+        else if (Controller1.ButtonDown.pressing()){
             CascadeRight.spin(directionType::fwd,-60,velocityUnits::pct);
             CascadeLeft.spin(directionType::fwd,-60,velocityUnits::pct);
         }
