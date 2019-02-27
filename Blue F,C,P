@@ -13,7 +13,6 @@ vex::motor claw (vex::PORT10,vex::gearSetting::ratio18_1,true);
 vex::competition;
 
 void pre_auton( void ) {
-
 }
 
 void autonomous( void ) {
